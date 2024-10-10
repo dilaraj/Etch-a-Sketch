@@ -1,13 +1,16 @@
 #container {
-    width: calc(16 * 6rem);
+    width: calc(16 * 2.5rem);
     display: flex;
     flex-wrap: wrap;
 }
 
-.column {
-    width: 6rem;
-    height: 6rem;
+.square {
+    width: 2.5rem;
+    height: 2.5rem;
     border: 1px solid black;
     box-sizing: border-box;
 }
 
+#newGrid {
+    margin: 15px
+}
