@@ -14,20 +14,41 @@ createNewGrid = () => {
     let containerWidth = container.clientWidth;
     let containerHeight = container.clientHeight;
 
-    let squareSize = containerWidth / gridSize;
+    let squareSize = containerWidth / gridSize; // Calculate the square size
 
     for(let i = 0; i < finalSize; i++) {
         var newSquare = document.createElement('div');
-        newSquare.className = "square";
+        newSquare.classList.add("square");
+        newSquare.style.width = `${squareSize}px`;
+        newSquare.style.height = `${squareSize}px`;
         container.appendChild(newSquare);
     }
 
-    let squares = document.getElementsByClassName("square")
-
-    for (let square of squares) {
-        square.onmouseover = () => {
-            square.style.backgroundColor = "blue"
-        }
-    }
+    colorGrid();
 }
 
+
+colorGrid = () => {
+    //alert("colorGrid function is working!")
+    let mouseDown = false;
+    const squareDiv = document.querySelectorAll(".square")
+
+    squareDiv.forEach((e) => {
+        e.setAttribute("draggable", false);
+        
+        e.addEventListener("mousedown", () => {
+            mouseDown = true
+            e.style.backgroundColor = "black";
+        })
+
+        e.addEventListener("mouseover", () => {
+            if (mouseDown) {
+                e.style.backgroundColor = "black";
+            }
+        })
+
+        e.addEventListener("mouseup", () => {
+            mouseDown = false;
+        })
+    })
+}
